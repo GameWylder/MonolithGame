@@ -1,4 +1,4 @@
-The "Master" Branch
+The "Alpha" Branch
 ============
 
-The "master" branch will be used to store the finished product. Please refer to the "Test" branch for current alpha's
+The "Alpha" branch will be used to store the Alpha product. The product will be moved to Beta once the base engine is complete.
