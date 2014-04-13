@@ -1,4 +1,4 @@
-######The Quest For Susan Ver 0.1.7a
+######The Quest For Susan Ver 0.1.8a
 ###COPYRIGHT @2014 Game Wylder/Anthony Dragone - Liscenced MIT
 [#info tab
 ######(Version Number is Determined By: State(alpha,beta,released).CompletedSegments(100 lines of code).ObjectivesCompleted) 
@@ -54,6 +54,8 @@ var = "DEFAULT"
 var2 = "DEFAULT"
 gameover = 0
 indent = "     "
+choice = "DEFAULT"
+oldman = "SIR DINGLEBERRY"
 
 ###Game Variables
 ##	(All game variables will start with GaV_)
@@ -196,24 +198,87 @@ def branch2():
 	follow()
 #
 
-[#def branch 3
-#def branch3():
-	
+def branch3():
+	def moral():
+		global morality
+		global var3
+		while True:
+			if morality == 1:
+				var3 = " even if he insulted you for hesitating; Who wouldn't be hesitant of a dark room with a unknown man in the centre?"
+				break
+			if morality == 2:
+				var3 = " at least, you think he tried to be nice."
+				break
 	#
-#	def action():
-	]
+	def result():
+		global oldman
+		print()
+		print(indent+"You follow the old man. Still unsure of his name you begin to question him. You're following a strange old man, who for all you know is a psychotic killer. You decide to give him a name. His name will be...")
+		print()
+		oldman = input()
+		print()
+		print(indent+"So, '"+oldman+"'? Yeah, you decide '"+oldman+"' is a good name. But, do you think he deserves kindness?")
+		print()
+		while True:
+			global var3
+			global choice
+			global morality
+			choice = input()
+			choice = choice.lower()
+			if choice == 'yes':
+				print(indent+"You believe he deserves kindness,"+var3)
+				morality = 1
+				break
+			elif choice == 'no':
+				print(indent+"You thought it would be funny to give him a nickname rather than asking for his real name. You personally think that '"+oldman+"' is a funny name. You don't believe he deserves kindness, but"+var3)
+				morality = 2
+				break
+			else:
+				print("Yes or No?")
+	#
+	moral()
+	result()
+#
+
+def branch4():
+	print()
+	print(indent+"You follow the oldman, aka '"+oldman+"', down a cave. A faint glimmer of light shimmers at the end of the cave. When you reach it, you see a sizeable, blue portal. You look at the frame, and then the spiral mist inside. You know something is wrong, but you insist to shrug it off.")
+	print()
+	print(indent+'"Here we are" '+oldman+' says, "This is where we part. Beyond this portal, we know nothing of. As a Champion it is your duty to explore it." he turns to shake your hand.')
+	print()
+	while True:
+		global morality
+		if morality == 1:
+			print(indent+'You extend your hand out to match his gesture. Giving '+oldman+' the respect you believe he deserves. He begins to walk back to the glass panel room, and wishes you luck before he vanishes from your sight.'+" You decide that there's no sense in wasting time. So you gallently  take a step into the portal, you decided to be Brave.")
+			print()
+			break
+		elif morality == 2:
+			print(indent+"You don't return the gesture. Rather, you give a bit of a snobbish grunt. You were trained for this moment, what does this old man know? He sighs and leaves you there infront of the portal."+'"So..." the oldman says before walking away. "'+oldman+'!? You think'+" that's"+' funny?" He turns towards you while your back is to the portal. "Arrogant Prick!" He lifts his foot up and spartan kicks you into the portal.')
+			print()
+			break
+		else:
+			print("MORALITY ERROR - BRANCH 4")
+#
+
+def branch5():
+	print()
+	print(indent+"As the blue mist engulfs your body, you feel as if every single atom in your body is ripped apart. Which isn't that painful, considering the fact you went headfirst into the portal, your head was the first to go. You think it kind of feels like that tingly feeling you get when your leg falls asleep. But you're not dead. Infact you're far from dead. Because if you were dead, you wouldn't be aware on the cold metal floor. You're eyes shoot open as you gasp for air. Where are you? You look around you and notice there's a round stone pillar. TO BE CONTINUED")
 #
 
 def debugres():
 	global devstate
 	global morality
 	global player
+	global oldman
 	if devstate == 1:
 		print()
 		print("Debug Results:")
 		print()
 		print("Player Name:")
 		print(player)
+		print()
+		print("Old man's name:")
+		print(oldman)
 		print()
 		print("Moral Path:")
 		print(morality)
@@ -252,6 +317,9 @@ def gamesequence():
 	yourname()
 	branch1()
 	branch2()
+	branch3()
+	branch4()
+	branch5()
 	#Debug
 	debugres()
 #	endgame()
